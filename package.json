@@ -1,0 +1,14 @@
+{
+  "name": "collaborative-whiteboard",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd server && npm start",
+    "client": "cd client && npm run dev",
+    "install:all":"npm i && cd client && npm i && cd ../server && npm i"
+  },
+  "devDependencies": {
+    "concurrently":"^8.2.2"
+  }
+}
