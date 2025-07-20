@@ -85,6 +85,12 @@ const handleSocketConnection = (io) => {
     // ending and saving strokes
     socket.on("draw-end", async (data) => {
       const { roomId, strokeData } = data;
+
+      if (!strokeData) {
+        console.error("Invalid stroke data received:", data);
+        return;
+      }
+
       try {
         // saving data
         const room = await Room.findOne({ roomId });
@@ -112,9 +118,9 @@ const handleSocketConnection = (io) => {
           room.drawingData.push({
             type: "clear",
             data: {},
-            timestamp: new Data(),
+            timestamp: new Date(),
           });
-          room.drawingDate = room.drawingData.filter(
+          room.drawingData = room.drawingData.filter(
             (cmd) =>
               cmd.timestamp.getTime() ===
               room.drawingData[room.drawingData.length - 1].timestamp.getTime(),
@@ -131,7 +137,7 @@ const handleSocketConnection = (io) => {
 
     // leaving room
     //
-    io.on("disconnect", () => {
+    socket.on("disconnect", () => {
       console.log(`User disconnected: ${socket.id}`);
 
       const roomId = userRooms.get(socket.id);
