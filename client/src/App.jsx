@@ -3,6 +3,8 @@ import io from "socket.io-client";
 import RoomJoin from "./components/RoomJoin";
 import Whiteboard from "./components/Whiteboard";
 
+const API_URL = import.meta.env.SERVICE;
+
 const App = () => {
   const [socket, setSocket] = useState(null);
   const [currentRoom, setCurrentRoom] = useState(null);
