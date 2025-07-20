@@ -385,3 +385,39 @@ For support and questions:
 - **User Accounts**: Registration and login system
 - **Drawing History**: Undo/redo functionality
 - **Voice Chat**: Integrated voice communication for collaborators
+
+# Deployment
+
+## Deploy Frontend on Vercel:
+
+Create a separate repository for your client or use the existing one
+Update your client's environment variables to point to your hosted backend
+Deploy the client folder to Vercel
+
+## Deploy Backend on Railway/Render:
+For your Express server with Socket.IO, consider using:
+
+- Railway: Great for full-stack apps with WebSocket support
+- Render: Good alternative with WebSocket support
+- Heroku: Classic choice (paid)
+
+## Deployment Steps for Vercel:
+
+- Push your code to GitHub/GitLab/Bitbucket
+- Connect to Vercel:
+
+Go to vercel.com
+Import your repository
+Vercel will auto-detect it as a Node.js project
+
+
+- Configure Environment Variables:
+
+In your Vercel dashboard, go to Settings → Environment Variables
+Add your MongoDB URI and other secrets
+
+
+## Deploy:
+
+Vercel will automatically build and deploy your app
+Update the socket connection URL in your client code with your actual Vercel URL
